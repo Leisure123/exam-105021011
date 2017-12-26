@@ -4,8 +4,8 @@ import java.io.IOException;
 public class Mario implements Runnable{
     private ImageStore store = new ImageStore();
 
-    private int x , y;
-    private int movex, movey;
+    private int x =0, y=0;
+    private int movex = 0, movey = 0;
     private int upTime;
     private JLabel mario = new JLabel();
     private ImageIcon nowImage;
@@ -124,6 +124,7 @@ public class Mario implements Runnable{
     public JLabel getMario() {
         return mario;
     }
+
     public int getMovex(){
         return movex;
     }
@@ -133,11 +134,11 @@ public class Mario implements Runnable{
     }
 
     public int getX(){
-        return x;
+        return this.x;
     }
 
     public int getY(){
-        return y;
+        return this.y;
     }
 
     public void setX(int x){

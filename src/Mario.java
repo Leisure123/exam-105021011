@@ -1,77 +1,88 @@
 import javax.swing.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class Mario implements Runnable{
     private ImageStore store = new ImageStore();
+    private Scenes scenes = new Scenes();
 
-    private int x =0, y=0;
+    private int x , y;
     private int movex = 0, movey = 0;
     private int upTime;
-    private JLabel mario = new JLabel();
-    private ImageIcon nowImage;
+    //jump = true; ground = false;
+    private boolean upCheck = false;
+    // Right = true; Left = false
+    private boolean RLCheck = true;
+
+    private BufferedImage nowImage;
     private String status;
     private Thread t = null;
 
     public Mario(int x, int y){
         this.x = x;
         this.y = y;
-        this.nowImage = store.marioImage.get(0);
-        this.status = "stand-right";
-        mario.setIcon(nowImage);
+        this.nowImage = store.marioImage.get(1);
+        this.status = "right";
         t = new Thread(this);
         t.start();
     }
 
     public void rightMove(){
         movex = 5;
-        if(status.equals("jump")){
-            status = "jump-right";
-        }else{
+        RLCheck = true;
+        if (!upCheck){
             status = "right";
+        }else{
+            status = "jump-right";
         }
     }
 
     public void leftMove(){
         movex = -5;
-        if(status.equals("jump")){
-            status = "jump-left";
-        }else{
+        RLCheck = false;
+        if (!upCheck){
             status = "left";
+        }else{
+            status = "jump-left";
         }
     }
 
     public void rightStop(){
-        movex = 0;
-        if(status.equals("jump")){
-            status = "jump-right";
-        }else{
+        this.movex = 0;
+        RLCheck = true;
+        if (!upCheck){
             status = "right";
+        }else{
+            status = "jump-right";
         }
     }
 
     public void leftStop(){
-        movex = 0;
-        if(status.equals("jump")){
-            status = "jump-left";
-        }else{
+        this.movex = 0;
+        RLCheck = false;
+        if (!upCheck){
             status = "left";
+        }else{
+            status = "jump-left";
         }
     }
 
     public void jump(){
-        if(!status.equals("jump")){
-            if(status.equals("right")){
+        // 限制跳一次
+        if (!upCheck){
+            if(RLCheck){
                 status = "jump-right";
             }else{
                 status = "jump-left";
             }
-            movey = -3;
-            upTime = 40;
+            movey = -5;
+            upTime = 32;
+            upCheck = true;
         }
     }
 
     public void drop(){
-        if(status.equals("right")){
+        if(RLCheck){
             status = "jump-right";
         }else{
             status = "jump-left";
@@ -83,17 +94,42 @@ public class Mario implements Runnable{
     public void run() {
         while(true){
             boolean canL = true, canR = true, onLand = false;
+            //miniMario
+            for(int i = 0; i < scenes.getBricks().size(); i++){
+                Brick br = scenes.getBricks().get(i);
+                //不允許往右
+                if((this.x + 50 == br.getX()) && (this.y < br.getY() + 50 && this.y > br.getY() - 50)){
+                    canR = false;
+                }
+                //不允許往左
+                if((this.x - 50 == br.getX()) && (this.y < br.getY() + 50 && this.y > br.getY() - 50)){
+                    canL = false;
+                }
+                //可以站在障礙物上
+                if((this.y + 50 == br.getY()) && (this.x < br.getX() + 50 && this.x > br.getX() - 50)){
+                    onLand = true;
+                }
+                //撞到障礙物
+                if((this.y - 50 == br.getY()) && (this.x < br.getX() + 50 && this.x > br.getX() - 50)){
+                    if(br.getType() == 1){
+                        scenes.getBricks().remove(br);
+                        scenes.getBrickRe().add(br);
+                    }
+                    if(br.getType() == 2 && upTime > 0){
+                        br.setType(1);
+                        br.setImage();
+                    }
+                    upTime = 0;
+                }
+            }
 
             if(onLand && upTime ==0){
-                if(status.equals("right")){
-                    if(movex != 0){
-                        status = "right";
-                    }
+                if(RLCheck){
+                    status = "right";
                 }else{
-                    if(movex != 0){
-                        status = "left";
-                    }
+                    status = "left";
                 }
+                upCheck = false;
             }else{
                 if(upTime != 0){
                     upTime--;
@@ -103,26 +139,41 @@ public class Mario implements Runnable{
                 y += movey;
             }
 
+            if(this.y > 600){
+                dead();
+            }
+
             if((canL && (movex < 0)) || (canR && (movex > 0))){
                 if(x < 0){
                     x = 0;
                 }
                 x += movex;
             }
-            if (status.equals("left")){
-                System.out.println(status);
-                nowImage = store.marioImage.get(1);
-                mario.setIcon(nowImage);
+
+//            this.nowImage = store.marioImage.get(0);
+
+            switch (status){
+                case "right":
+                    this.nowImage = store.marioImage.get(0);
+                    break;
+                case "left":
+                    this.nowImage = store.marioImage.get(1);
+                    break;
+                case "jump-right":
+                    this.nowImage = store.marioImage.get(2);
+                    break;
+                case "jump-left":
+                    this.nowImage = store.marioImage.get(3);
+                    break;
             }
-            if(status.equals("right")){
-                nowImage = store.marioImage.get(0);
-                mario.setIcon(nowImage);
+
+            try{
+                Thread.sleep(40);
+            }catch(InterruptedException e){
+                e.printStackTrace();
             }
 
         }
-    }
-    public JLabel getMario() {
-        return mario;
     }
 
     public int getMovex(){
@@ -139,6 +190,15 @@ public class Mario implements Runnable{
 
     public int getY(){
         return this.y;
+    }
+
+    public BufferedImage getNowImage(){
+        return nowImage;
+    }
+
+    public void dead(){
+        this.x = 5;
+        this.y = 480;
     }
 
     public void setX(int x){

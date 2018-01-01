@@ -1,33 +1,37 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.util.Iterator;
 
-public class MarioGame extends JFrame implements Runnable{
-    private int width = 900,height = 600;
+
+public class Test2 extends JFrame implements Runnable{
+    private int width = 1500,height = 600;
     private int scrW = Toolkit.getDefaultToolkit().getScreenSize().width/2;
     private int scrH = Toolkit.getDefaultToolkit().getScreenSize().height/2;
+//    String imagePath = System.getProperty("user.dir") + "/Image/";
 
     private ImageStore store = new ImageStore();
+    private Scenes scenes = new Scenes();
 
-    private boolean check = false;
     private Thread t = new Thread(this);
-    private JLabel lbMario;
+    private boolean check = false;
 
     private Mario mario = null;
 
-    public MarioGame(){
+    public Test2(){
         this.setBounds(scrW-(width/2),scrH-(height/2),width,height);
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLayout(null);
 //        this.setBackground(new Color(0, 0, 0));
 
-        mario = new Mario(10,465);
-//        mario.getMario().setBounds(mario.getX(),mario.getY(),50,75);
-//        lbMario = new JLabel((Icon) mario.getMario());
-//        this.add(mario.getMario());
-        t.start();
+        this.mario = new Mario(5,480);
 
+        this.repaint();
+
+        t.start();
+//        this.setVisible(true);
 
         this.addKeyListener(new KeyListener() {
             @Override
@@ -40,16 +44,16 @@ public class MarioGame extends JFrame implements Runnable{
                 switch (e.getKeyCode()){
                     case KeyEvent.VK_LEFT:
                         mario.leftMove();
-                        check = true;
+                        check = false;
                         break;
                     case KeyEvent.VK_RIGHT:
                         mario.rightMove();
 //                        System.out.println("right");
-                        check = true;
+                        check = false;
                         break;
                     case KeyEvent.VK_UP:
                         mario.jump();
-                        check = true;
+                        check = false;
                         break;
                     default:
                         break;
@@ -61,11 +65,11 @@ public class MarioGame extends JFrame implements Runnable{
                 switch (e.getKeyCode()){
                     case KeyEvent.VK_LEFT:
                         mario.leftStop();
-                        check = false;
+                        check = true;
                         break;
                     case KeyEvent.VK_RIGHT:
                         mario.rightStop();
-                        check = false;
+                        check = true;
                         break;
                     default:
                         break;
@@ -75,22 +79,34 @@ public class MarioGame extends JFrame implements Runnable{
 
     }
 
+    public void paint(Graphics g){
+        BufferedImage image = new BufferedImage(WIDTH,HEIGHT,BufferedImage.TYPE_4BYTE_ABGR);
+        Graphics g2 = image.getGraphics();
+        //畫背景
+        g.drawImage(store.backGround,0,0,this);
+        //畫出障礙物
+        for(int i = 0;i < scenes.getBricks().size(); i++){
+            Brick br = scenes.getBricks().get(i);
+            g.drawImage(br.getShowImage(),br.getX(),br.getY(),this);
+        }
+        //畫Mario
+        g.drawImage(mario.getNowImage(),this.mario.getX(),this.mario.getY(),this);
+
+//        g.drawImage(image,0,0,this);
+    }
+
     public void run(){
         while(true){
+            this.repaint();
             try{
-                if((mario.getMovex() != 0) &&(mario.getMovey() != 0)){
-//                    mario.getMario().setLocation(mario.getX(),mario.getX());
-                    System.out.println(mario.getX());
-                    System.out.println(mario.getY());
-                    System.out.println("y");
-                }else{
-                    System.out.print("");
-                }
-                Thread.sleep(50);
+                Thread.sleep(60);
+//                System.out.println(imagePath);
             }catch(Exception q){
                 System.out.println(q);
             }
         }
+
     }
 
 }
+

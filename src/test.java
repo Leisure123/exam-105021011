@@ -15,9 +15,7 @@ public class test extends JFrame implements Runnable{
 
     private ImageStore store = new ImageStore();
 
-    private JLabel lbmario = new JLabel(store.marioImage.get(0));
-
-
+    private JLabel lbmario = new JLabel();
     public test() {
         this.setBounds(scrW - (width / 2), scrH - (height / 2), width, height);
         this.setResizable(false);
@@ -168,6 +166,11 @@ public class test extends JFrame implements Runnable{
                     x = 0;
                 }
                 x += movex;
+            }
+            try{
+                Thread.sleep(50);
+            }catch(InterruptedException e){
+                e.printStackTrace();
             }
 //            if (status.equals("left")){
 //                System.out.println(status);

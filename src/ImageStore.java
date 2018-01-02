@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public class ImageStore {
     private static String imagePath = System.getProperty("user.dir") + "/Image/";
+    //    private static String imagePath = "D:\Users\GitHub\exam-105021011\Image/";
     public static ArrayList<BufferedImage> marioImage;
-//    private static String imagePath = "D:\Users\GitHub\exam-105021011\Image/";
     public static ArrayList<BufferedImage> enemyImage;
     public static BufferedImage bigImage;
     public static ArrayList<BufferedImage> obImage;

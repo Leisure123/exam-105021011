@@ -111,14 +111,14 @@ public class Mario implements Runnable{
                 }
                 //撞到障礙物
                 if((this.y - 50 == br.getY()) && (this.x < br.getX() + 50 && this.x > br.getX() - 50)){
-                    if(br.getType() == 1){
-                        scenes.getBricks().remove(br);
-                        scenes.getBrickRe().add(br);
-                    }
-                    if(br.getType() == 2 && upTime > 0){
-                        br.setType(1);
-                        br.setImage();
-                    }
+//                    if(br.getType() == 1){
+//                        scenes.getBricks().remove(br);
+//                        scenes.getBrickRe().add(br);
+//                    }
+//                    if(br.getType() == 2 && upTime > 0){
+//                        br.setType(1);
+//                        br.setImage();
+//                    }
                     upTime = 0;
                 }
             }
@@ -199,6 +199,7 @@ public class Mario implements Runnable{
     public void dead(){
         this.x = 5;
         this.y = 480;
+//        JOptionPane.showMessageDialog(null,"Dead  Haha 87");
     }
 
     public void setX(int x){

@@ -10,6 +10,8 @@ public class Test2 extends JFrame implements Runnable{
     private int scrW = Toolkit.getDefaultToolkit().getScreenSize().width/2;
     private int scrH = Toolkit.getDefaultToolkit().getScreenSize().height/2;
 //    String imagePath = System.getProperty("user.dir") + "/Image/";
+    private int time = 0;
+    private Timer timer;
 
     private ImageStore store = new ImageStore();
     private Scenes scenes = new Scenes();
@@ -31,7 +33,13 @@ public class Test2 extends JFrame implements Runnable{
         this.repaint();
 
         t.start();
-//        this.setVisible(true);
+
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+                timer.start();
+            }
+        });
 
         this.addKeyListener(new KeyListener() {
             @Override
@@ -44,16 +52,15 @@ public class Test2 extends JFrame implements Runnable{
                 switch (e.getKeyCode()){
                     case KeyEvent.VK_LEFT:
                         mario.leftMove();
-                        check = false;
                         break;
                     case KeyEvent.VK_RIGHT:
                         mario.rightMove();
-//                        System.out.println("right");
-                        check = false;
                         break;
                     case KeyEvent.VK_UP:
                         mario.jump();
-                        check = false;
+                        break;
+                    case KeyEvent.VK_SPACE:
+                        mario.jump();
                         break;
                     default:
                         break;
@@ -65,15 +72,19 @@ public class Test2 extends JFrame implements Runnable{
                 switch (e.getKeyCode()){
                     case KeyEvent.VK_LEFT:
                         mario.leftStop();
-                        check = true;
                         break;
                     case KeyEvent.VK_RIGHT:
                         mario.rightStop();
-                        check = true;
                         break;
                     default:
                         break;
                 }
+            }
+        });
+        timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                time++;
             }
         });
 
@@ -84,6 +95,8 @@ public class Test2 extends JFrame implements Runnable{
         Graphics g2 = image.getGraphics();
         //畫背景
         g.drawImage(store.backGround,0,0,this);
+        g.setFont(new Font(null,Font.BOLD,25));
+        g.drawString("Time:"+time+"s",1370,60);
         //畫出障礙物
         for(int i = 0;i < scenes.getBricks().size(); i++){
             Brick br = scenes.getBricks().get(i);
@@ -99,9 +112,10 @@ public class Test2 extends JFrame implements Runnable{
         while(true){
             this.repaint();
             try{
-                Thread.sleep(60);
+                Thread.sleep(50);
 //                System.out.println(imagePath);
             }catch(Exception q){
+
                 System.out.println(q);
             }
         }
@@ -109,4 +123,5 @@ public class Test2 extends JFrame implements Runnable{
     }
 
 }
+
 

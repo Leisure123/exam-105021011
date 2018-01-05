@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -201,6 +202,8 @@ public class Mario implements Runnable{
         this.y = 480;
 //        JOptionPane.showMessageDialog(null,"Dead  Haha 87");
     }
+
+
 
     public void setX(int x){
         this.x = x;

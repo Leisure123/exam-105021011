@@ -89,6 +89,9 @@ public class Test2 extends JFrame implements Runnable{
         });
 
     }
+    public void update(Graphics g){
+        paint(g);
+    }
 
     public void paint(Graphics g){
         BufferedImage image = new BufferedImage(WIDTH,HEIGHT,BufferedImage.TYPE_4BYTE_ABGR);

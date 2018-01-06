@@ -89,9 +89,9 @@ public class Test2 extends JFrame implements Runnable{
         });
 
     }
-    public void update(Graphics g){
-        paint(g);
-    }
+//    public void update(Graphics g){
+//        paint(g);
+//    }
 
     public void paint(Graphics g){
         BufferedImage image = new BufferedImage(WIDTH,HEIGHT,BufferedImage.TYPE_4BYTE_ABGR);
@@ -99,7 +99,11 @@ public class Test2 extends JFrame implements Runnable{
         //畫背景
         g.drawImage(store.backGround,0,0,this);
         g.setFont(new Font(null,Font.BOLD,25));
-        g.drawString("Time:"+time+"s",1370,60);
+        //paint Timer
+        g.drawString("Time",1370,60);
+        g.drawString(time+"s",1370,90);
+        //paint headlife
+//        g.drawImage(store.headlife,)
         //畫出障礙物
         for(int i = 0;i < scenes.getBricks().size(); i++){
             Brick br = scenes.getBricks().get(i);

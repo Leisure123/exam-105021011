@@ -145,7 +145,7 @@ public class Mario implements Runnable{
             }
 
             if((canL && (movex < 0)) || (canR && (movex > 0))){
-                if(x < 0){
+                if(x < 0 || x > 1500){
                     x = 0;
                 }
                 x += movex;

@@ -13,6 +13,8 @@ public class ImageStore {
     public static BufferedImage bigImage;
     public static ArrayList<BufferedImage> obImage;
     public static BufferedImage backGround;
+    public static BufferedImage headlife;
+    public static BufferedImage endingflag;
 
     static {
         marioImage = new ArrayList<BufferedImage>();
@@ -33,6 +35,10 @@ public class ImageStore {
             }
 
             backGround = ImageIO.read(new FileInputStream(imagePath +"BG.png"));
+
+            headlife = ImageIO.read(new FileInputStream(imagePath+"headlife.png"));
+
+            endingflag = ImageIO.read(new FileInputStream(imagePath+"flag.png"));
 
 
         }catch(Exception e){

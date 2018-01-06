@@ -13,13 +13,15 @@ public class ImageStore {
     public static BufferedImage bigImage;
     public static ArrayList<BufferedImage> obImage;
     public static BufferedImage backGround;
-    public static BufferedImage headlife;
+    public static ArrayList<BufferedImage> headlife;
     public static BufferedImage endingflag;
+    public static BufferedImage portal;
 
     static {
         marioImage = new ArrayList<BufferedImage>();
         enemyImage = new ArrayList<BufferedImage>();
         obImage = new ArrayList<BufferedImage>();
+        headlife = new ArrayList<BufferedImage>();
 
         try{
             for(int i = 1; i <= 8; i++){
@@ -30,15 +32,19 @@ public class ImageStore {
             for(int i = 1; i <= 2; i++){
                 enemyImage.add(ImageIO.read(new FileInputStream(imagePath +"mashroom"+ i + ".png")));
             }
-            for(int i = 1; i <= 4; i++){
+            for(int i = 1; i <= 5; i++){
                 obImage.add(ImageIO.read(new FileInputStream(imagePath+"brick"+ i +".png")));
+            }
+
+            for(int i = 1; i<=3; i++){
+                headlife.add(ImageIO.read(new FileInputStream(imagePath+"headlife"+ i +".png")));
             }
 
             backGround = ImageIO.read(new FileInputStream(imagePath +"BG.png"));
 
-            headlife = ImageIO.read(new FileInputStream(imagePath+"headlife.png"));
-
             endingflag = ImageIO.read(new FileInputStream(imagePath+"flag.png"));
+
+            portal = ImageIO.read(new FileInputStream(imagePath+"portal.png"));
 
 
         }catch(Exception e){

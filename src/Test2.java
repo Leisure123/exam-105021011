@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 
@@ -26,7 +27,6 @@ public class Test2 extends JFrame implements Runnable{
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLayout(null);
-//        this.setBackground(new Color(0, 0, 0));
 
         this.mario = new Mario(5,480);
 
@@ -98,12 +98,14 @@ public class Test2 extends JFrame implements Runnable{
         Graphics g2 = image.getGraphics();
         //畫背景
         g.drawImage(store.backGround,0,0,this);
+        g.drawImage(store.portal,1450,330,this);
         g.setFont(new Font(null,Font.BOLD,25));
         //paint Timer
         g.drawString("Time",1370,60);
         g.drawString(time+"s",1370,90);
         //paint headlife
-//        g.drawImage(store.headlife,)
+        g.drawString("Life : ",20,65);
+         g.drawImage(mario.getLifeImage(),80,45,this);
         //畫出障礙物
         for(int i = 0;i < scenes.getBricks().size(); i++){
             Brick br = scenes.getBricks().get(i);

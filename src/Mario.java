@@ -14,8 +14,10 @@ public class Mario implements Runnable{
     private boolean upCheck = false;
     // Right = true; Left = false
     private boolean RLCheck = true;
+    private int life = 0;
 
     private BufferedImage nowImage;
+    private BufferedImage lifeImage;
     private String status;
     private Thread t = null;
 
@@ -23,6 +25,7 @@ public class Mario implements Runnable{
         this.x = x;
         this.y = y;
         this.nowImage = store.marioImage.get(1);
+        this.lifeImage = store.headlife.get(0);
         this.status = "right";
         t = new Thread(this);
         t.start();
@@ -112,6 +115,10 @@ public class Mario implements Runnable{
                 }
                 //撞到障礙物
                 if((this.y - 50 == br.getY()) && (this.x < br.getX() + 50 && this.x > br.getX() - 50)){
+                    if (br.getType() == 4){
+                        br.setType(1);
+                        br.setImage();
+                    }
 //                    if(br.getType() == 1){
 //                        scenes.getBricks().remove(br);
 //                        scenes.getBrickRe().add(br);
@@ -122,6 +129,12 @@ public class Mario implements Runnable{
 //                    }
                     upTime = 0;
                 }
+            }
+
+            if ((this.x + 50 == 1460) && (this.y < 380 && this.y > 280)){
+//                System.exit(0);
+
+
             }
 
             if(onLand && upTime ==0){
@@ -168,6 +181,18 @@ public class Mario implements Runnable{
                     break;
             }
 
+            switch (life){
+                case 0:
+                    this.lifeImage = store.headlife.get(0);
+                    break;
+                case 1:
+                    this.lifeImage = store.headlife.get(1);
+                    break;
+                case 2:
+                    this.lifeImage = store.headlife.get(2);
+                    break;
+            }
+
             try{
                 Thread.sleep(40);
             }catch(InterruptedException e){
@@ -197,10 +222,20 @@ public class Mario implements Runnable{
         return nowImage;
     }
 
+    public BufferedImage getLifeImage(){
+        return lifeImage;
+    }
+
     public void dead(){
         this.x = 5;
         this.y = 480;
-//        JOptionPane.showMessageDialog(null,"Dead  Haha 87");
+        life++;
+        if (life == 3){
+
+//           JOptionPane.showMessageDialog(null,"You are Dead  Haha 87");
+//           System.exit(0);
+
+        }
     }
 
 

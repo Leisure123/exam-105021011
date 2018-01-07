@@ -39,4 +39,5 @@ public class Brick{
     public void setType(int t){
         this.type = t;
     }
+
 }

@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class Mario implements Runnable{
+public class Mario2 implements Runnable{
     private ImageStore store = new ImageStore();
     private Scenes scenes = new Scenes();
 
@@ -21,7 +21,7 @@ public class Mario implements Runnable{
     private String status;
     private Thread t = null;
 
-    public Mario(int x, int y){
+    public Mario2(int x, int y){
         this.x = x;
         this.y = y;
         this.nowImage = store.marioImage.get(1);
@@ -99,8 +99,8 @@ public class Mario implements Runnable{
         while(true){
             boolean canL = true, canR = true, onLand = false;
             //miniMario
-            for(int i = 0; i < scenes.getBricks().size(); i++){
-                Brick br = scenes.getBricks().get(i);
+            for(int i = 0; i < scenes.getBricks2().size(); i++){
+                Brick br = scenes.getBricks2().get(i);
                 //不允許往右
                 if((this.x + 50 == br.getX()) && (this.y < br.getY() + 50 && this.y > br.getY() - 50)){
                     canR = false;
@@ -131,12 +131,11 @@ public class Mario implements Runnable{
                 }
             }
 
-//            if (((this.x + 50 == 1460) && (this.y < 380 && this.y > 280)) || ((this.y + 50 == 330) && (this.x < 1500 && this.x > 1410))){
-////                System.exit(0);
-//                Test3 t3 = new Test3(Test2.this);
-//                Test2.setVisible(true);
-//
-//            }
+            if (((this.x + 50 == 1460) && (this.y < 550 && this.y > 340))){
+                JOptionPane.showMessageDialog(null,"Ending");
+                System.exit(0);
+
+            }
 
             if(onLand && upTime ==0){
                 if(RLCheck){
@@ -159,12 +158,8 @@ public class Mario implements Runnable{
             }
 
             if((canL && (movex < 0)) || (canR && (movex > 0))){
-                if(x < 0){
+                if(x < 0 || x > 1500){
                     x = 0;
-                }
-                if(x > 1500){
-                    x = 1450;
-                    y = 200;
                 }
                 x += movex;
             }
@@ -233,7 +228,7 @@ public class Mario implements Runnable{
 
     public void dead(){
         this.x = 5;
-        this.y = 480;
+        this.y = 100;
         life++;
         if (life == 3){
 

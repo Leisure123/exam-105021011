@@ -3,6 +3,8 @@ import java.util.ArrayList;
 public class Scenes {
     private ArrayList<Brick> bricks = new ArrayList<Brick>();
     private ArrayList<Brick> bricks2 = new ArrayList<Brick>();
+    private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+    private ArrayList<Enemy> enemiesRe = new ArrayList<Enemy>();
 
     private int bg;
 
@@ -47,6 +49,7 @@ public class Scenes {
                 bricks.add(new Brick(1150,200,2));
                 bricks.add(new Brick(1100,200,1));
 
+                enemies.add(new Enemy(1000,500,true,1));
 
 
                 //bricks2
@@ -83,5 +86,7 @@ public class Scenes {
         return bricks2;
     }
 
-
+    public ArrayList<Enemy> getEnemies() {
+        return enemies;
+    }
 }

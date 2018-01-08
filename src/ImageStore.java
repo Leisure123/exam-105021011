@@ -10,7 +10,7 @@ public class ImageStore {
     //    private static String imagePath = "D:\Users\GitHub\exam-105021011\Image/";
     public static ArrayList<BufferedImage> marioImage;
     public static ArrayList<BufferedImage> enemyImage;
-    public static BufferedImage bigImage;
+    public static BufferedImage toxicImage;
     public static ArrayList<BufferedImage> obImage;
     public static BufferedImage backGround;
     public static ArrayList<BufferedImage> headlife;
@@ -27,9 +27,9 @@ public class ImageStore {
             for(int i = 1; i <= 8; i++){
                 marioImage.add(ImageIO.read(new FileInputStream(imagePath + i + ".png")));
             }
-            bigImage = ImageIO.read(new FileInputStream(imagePath +"big.png"));
+            toxicImage = ImageIO.read(new FileInputStream(imagePath +"toxic.png"));
 
-            for(int i = 1; i <= 2; i++){
+            for(int i = 1; i <= 3; i++){
                 enemyImage.add(ImageIO.read(new FileInputStream(imagePath +"mashroom"+ i + ".png")));
             }
             for(int i = 1; i <= 5; i++){
@@ -45,7 +45,6 @@ public class ImageStore {
             endingflag = ImageIO.read(new FileInputStream(imagePath+"flag.png"));
 
             portal = ImageIO.read(new FileInputStream(imagePath+"portal.png"));
-
 
         }catch(Exception e){
             e.printStackTrace();

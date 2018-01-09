@@ -27,6 +27,7 @@ public class Test2 extends JFrame implements Runnable{
     public Test2(){
         this.setBounds(scrW-(width/2),scrH-(height/2),width,height);
         this.setResizable(false);
+        this.setTitle("Mario_試煉之地");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLayout(null);
 

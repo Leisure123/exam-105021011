@@ -53,30 +53,30 @@ public class Scenes {
 
 
                 //bricks2
-                 for(int i = 0; i < 5; i++){
+                 for(int i = 0; i < 3; i++){
                         bricks2.add(new Brick(i*50,150,0));
                     }
                     for(int i = 0; i < 30; i++) {
                         bricks2.add(new Brick(i * 50, -30, 0));
                     }
                     for(int i = 0; i < 9; i++){
-                        bricks2.add(new Brick(400,0+(i*50),1));
+                        bricks2.add(new Brick(250,0+(i*50),1));
                     }
                     for(int i = 0; i < 25; i++){
                         bricks2.add(new Brick(500+(i*50),550,0));
                     }
                     for(int i = 0; i < 9; i++){
-                        bricks2.add(new Brick(600,500-(i*50),1));
+                        bricks2.add(new Brick(450,500-(i*50),1));
                     }
-                    for(int i = 0; i < 2; i++){
-                        bricks2.add(new Brick(650+(i*50),400,1));
-                    }
-                    bricks2.add(new Brick(550,450,3));
-                    bricks2.add(new Brick(550,300,3));
-                    bricks2.add(new Brick(550,150,3));
-                    bricks2.add(new Brick(450,380,3));
-                    bricks2.add(new Brick(450,220,3));
-                    bricks2.add(new Brick(450,80,3));
+//                    for (int i = 0; i < 2; i++){
+//                        bricks2.add(new Brick(650+(i*50),400,1));
+//                    }
+                    bricks2.add(new Brick(400,450,3));
+                    bricks2.add(new Brick(400,300,3));
+                    bricks2.add(new Brick(400,150,3));
+                    bricks2.add(new Brick(300,380,3));
+                    bricks2.add(new Brick(300,220,3));
+                    bricks2.add(new Brick(300,80,3));
     }
 
     public ArrayList<Brick> getBricks() {

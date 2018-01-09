@@ -99,7 +99,7 @@ public class Test2 extends JFrame implements Runnable{
         g2.drawRect(0,0,width,height);
         //畫背景
         g2.drawImage(store.backGround,0,0,this);
-        g2.drawImage(store.portal,1450,330,this);
+        g2.drawImage(store.portal,1450,320,this);
         g2.setFont(new Font(null,Font.BOLD,25));
         //paint Timer
         g2.drawString("Time",1370,60);

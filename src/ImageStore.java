@@ -44,7 +44,7 @@ public class ImageStore {
 
             endingflag = ImageIO.read(new FileInputStream(imagePath+"flag.png"));
 
-            portal = ImageIO.read(new FileInputStream(imagePath+"portal.png"));
+            portal = ImageIO.read(new FileInputStream(imagePath+"portal2.png"));
 
         }catch(Exception e){
             e.printStackTrace();

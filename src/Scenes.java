@@ -17,7 +17,7 @@ public class Scenes {
 
                 }
                 for(int i = 0; i < 30; i++){
-                    bricks.add(new Brick(i*50,-20,0));
+                    bricks.add(new Brick(i*50,-30,0));
                 }
                 //前-下方塊1
                 bricks.add(new Brick(200,400,1));
@@ -57,7 +57,7 @@ public class Scenes {
                         bricks2.add(new Brick(i*50,150,0));
                     }
                     for(int i = 0; i < 30; i++) {
-                        bricks2.add(new Brick(i * 50, -20, 0));
+                        bricks2.add(new Brick(i * 50, -30, 0));
                     }
                     for(int i = 0; i < 9; i++){
                         bricks2.add(new Brick(400,0+(i*50),1));

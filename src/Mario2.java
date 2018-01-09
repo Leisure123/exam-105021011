@@ -232,7 +232,7 @@ public class Mario2 implements Runnable{
         life++;
         if (life == 3){
 
-           JOptionPane.showMessageDialog(null,"You are Dead  Haha 87");
+           JOptionPane.showMessageDialog(null,"You are Dead");
            System.exit(0);
 
         }

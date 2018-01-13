@@ -99,8 +99,8 @@ public class Mario3 implements Runnable{
         while(true){
             boolean canL = true, canR = true, onLand = false;
             //miniMario
-            for(int i = 0; i < scenes.getBricks2().size(); i++){
-                Brick br = scenes.getBricks2().get(i);
+            for(int i = 0; i < scenes.getBricks3().size(); i++){
+                Brick br = scenes.getBricks3().get(i);
                 //不允許往右
                 if((this.x + 50 == br.getX()) && (this.y < br.getY() + 50 && this.y > br.getY() - 50)){
                     canR = false;

@@ -133,11 +133,11 @@ public class Mario2 implements Runnable{
                 }
             }
 
-            if (((this.x + 50 == 1460) && (this.y < 550 && this.y > 340))){
-                JOptionPane.showMessageDialog(null,"Ending");
-                System.exit(0);
-
-            }
+//            if (((this.x + 50 == 1460) && (this.y < 550 && this.y > 340))){
+//                JOptionPane.showMessageDialog(null,"Ending");
+//                System.exit(0);
+//
+//            }
 
             if(onLand && upTime ==0){
                 if(RLCheck){

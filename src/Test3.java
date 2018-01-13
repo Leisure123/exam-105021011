@@ -126,6 +126,12 @@ public class Test3 extends JFrame implements Runnable{
     public void run(){
         while(true){
             this.repaint();
+            if (((mario.getX() + 50 == 1465) && (mario.getY() < 410 && mario.getY() > 290)) || ((mario.getY() + 50 == 360) && (mario.getX() < 1500 && mario.getX() > 1410))){
+                System.exit(1);
+                Test4 t4 = new Test4(Test3.this);
+                t4.setVisible(true);
+                Test3.this.dispose();
+            }
             try{
                 Thread.sleep(10);
 //                System.out.println(imagePath);

@@ -19,16 +19,16 @@ public class Test4 extends JFrame implements Runnable{
     private Thread t = new Thread(this);
     private boolean check = false;
 
-    private Mario mario = null;
+    private Mario3 mario = null;
 
-    public Test4(){
+    public Test4(Test3 t3){
         this.setBounds(scrW-(width/2),scrH-(height/2),width,height);
         this.setResizable(false);
-        this.setTitle("Mario_試煉之地");
+        this.setTitle("Mario_危機重重");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLayout(null);
 
-        this.mario = new Mario(5,480);
+        this.mario = new Mario3(5,100);
 
         this.repaint();
 
@@ -97,7 +97,8 @@ public class Test4 extends JFrame implements Runnable{
         g2.drawRect(0,0,width,height);
         //畫背景
         g2.drawImage(store.backGround,0,0,this);
-        g2.drawImage(store.endingflag,1450,320,this);
+        //旗子
+        g2.drawImage(store.endingflag,1450,350,this);
         g2.setFont(new Font(null,Font.BOLD,25));
         //paint Timer
         g2.drawString("Time",1370,60);
@@ -106,8 +107,8 @@ public class Test4 extends JFrame implements Runnable{
         g2.drawString("Life : ",20,65);
         g2.drawImage(mario.getLifeImage(),80,45,this);
         //畫出障礙物
-        for(int i = 0;i < scenes.getBricks().size(); i++){
-            Brick br = scenes.getBricks().get(i);
+        for(int i = 0;i < scenes.getBricks3().size(); i++){
+            Brick br = scenes.getBricks3().get(i);
             g2.drawImage(br.getShowImage(),br.getX(),br.getY(),this);
         }
         //畫Mario

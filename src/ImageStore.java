@@ -32,7 +32,7 @@ public class ImageStore {
             for(int i = 1; i <= 3; i++){
                 enemyImage.add(ImageIO.read(new FileInputStream(imagePath +"mashroom"+ i + ".png")));
             }
-            for(int i = 1; i <= 5; i++){
+            for(int i = 1; i <= 8; i++){
                 obImage.add(ImageIO.read(new FileInputStream(imagePath+"brick"+ i +".png")));
             }
 

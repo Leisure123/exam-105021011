@@ -101,20 +101,21 @@ public class Test3 extends JFrame implements Runnable{
         g2.drawRect(0,0,width,height);
         //畫背景
         g2.drawImage(store.backGround,0,0,this);
-        g2.drawImage(store.endingflag,1450,350,this);
+        g2.drawImage(store.portal,1450,350,this);
+//        g2.drawImage(store.endingflag,1450,350,this);
         g2.setFont(new Font(null,Font.BOLD,25));
-        //paint Timer
-        g2.drawString("Time",1370,60);
-        g2.drawString(time+"s",1370,90);
-        //paint headlife
-        g2.drawString("Life : ",20,65);
-        g2.drawImage(mario.getLifeImage(),80,45,this);
         //畫出障礙物
         for(int i = 0;i < scenes.getBricks2().size(); i++){
             Brick br = scenes.getBricks2().get(i);
             g2.drawImage(br.getShowImage(),br.getX(),br.getY(),this);
 
         }
+        //paint Timer
+        g2.drawString("Time",1370,60);
+        g2.drawString(time+"s",1370,90);
+        //paint headlife
+        g2.drawString("Life : ",20,65);
+        g2.drawImage(mario.getLifeImage(),80,45,this);
         //畫Mario
         g2.drawImage(mario.getNowImage(),this.mario.getX(),this.mario.getY(),this);
 

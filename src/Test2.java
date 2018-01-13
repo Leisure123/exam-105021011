@@ -108,16 +108,11 @@ public class Test2 extends JFrame implements Runnable{
         //paint headlife
         g2.drawString("Life : ",20,65);
         g2.drawImage(mario.getLifeImage(),80,45,this);
-
         //畫出障礙物
         for(int i = 0;i < scenes.getBricks().size(); i++){
             Brick br = scenes.getBricks().get(i);
             g2.drawImage(br.getShowImage(),br.getX(),br.getY(),this);
         }
-//        for(int i = 0;i < scenes.getEnemies().size(); i++){
-//            Enemy e = scenes.getEnemies().get(i);
-//            g2.drawImage(store.enemyImage.get(0),500,500,this);
-//        }
         //畫Mario
         g2.drawImage(mario.getNowImage(),this.mario.getX(),this.mario.getY(),this);
 

@@ -111,7 +111,9 @@ public class Mario2 implements Runnable{
                 }
                 //可以站在障礙物上
                 if((this.y + 50 == br.getY()) && (this.x < br.getX() + 50 && this.x > br.getX() - 50)){
-                    onLand = true;
+                    if (br.getType() != 5 && br.getType() != 6 && br.getType() != 7){
+                        onLand = true;
+                    }
                 }
                 //撞到障礙物
                 if((this.y - 50 == br.getY()) && (this.x < br.getX() + 50 && this.x > br.getX() - 50)){

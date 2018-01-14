@@ -160,8 +160,12 @@ public class Mario2 implements Runnable{
             }
 
             if((canL && (movex < 0)) || (canR && (movex > 0))){
-                if(x < 0 || x > 1500){
+                if(x < 0){
                     x = 0;
+                }
+                if(x > 1500){
+                    x = 1450;
+                    y = 200;
                 }
                 x += movex;
             }

@@ -40,9 +40,9 @@ public class Scenes {
         bricks.add(new Brick(750,100,1));
         bricks.add(new Brick(750,50,1));
         bricks.add(new Brick(750,0,1));
-//        for(int i = 0;i < 8;i++ ){
-//            bricks.add(new Brick(850,500 - (i *50),1));
-//        }
+        for(int i = 0;i < 8;i++ ){
+            bricks.add(new Brick(850,500 - (i *50),1));
+        }
         //後-方塊
         bricks.add(new Brick(1300,200,1));
         bricks.add(new Brick(1250,200,1));
@@ -61,9 +61,9 @@ public class Scenes {
             bricks2.add(new Brick(250,0+(i*50),1));
         }
         for(int i = 0; i < 25; i++){
-//            if (i != 12 && i != 13){
+            if (i != 12 && i != 13){
                 bricks2.add(new Brick(500+(i*50),550,0));
-//            }
+            }
         }
         bricks2.add(new Brick(1100,550,5));
         bricks2.add(new Brick(1150,550,5));

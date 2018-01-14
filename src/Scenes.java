@@ -73,34 +73,34 @@ public class Scenes {
         }
         //迷宮
         for(int i = 0; i < 9; i++){
-            bricks2.add(new Brick(600,50*i,3));
+            bricks2.add(new Brick(600,50*i,4));
         }
-        bricks2.add(new Brick(550,450,3));
+        bricks2.add(new Brick(550,450,4));
 
         for(int i = 0; i < 9; i++){
-            bricks2.add(new Brick(800,500-(i*50),3));
+            bricks2.add(new Brick(800,500-(i*50),4));
         }
-        bricks2.add(new Brick(650,400,3));
-        bricks2.add(new Brick(700,400,3));
-        bricks2.add(new Brick(650,250,3));
-        bricks2.add(new Brick(750,150,3));
+        bricks2.add(new Brick(650,400,4));
+        bricks2.add(new Brick(700,400,4));
+        bricks2.add(new Brick(650,250,4));
+        bricks2.add(new Brick(750,150,4));
         for(int i = 0; i < 8; i++){
-            bricks2.add(new Brick(850+(i*50),100,3));
+            bricks2.add(new Brick(850+(i*50),100,4));
         }
         for(int i = 0; i < 6; i++){
-            bricks2.add(new Brick(1350,i*50,3));
+            bricks2.add(new Brick(1350,i*50,4));
         }
         for(int i = 0; i < 8; i++){
-            bricks2.add(new Brick(1300-(i*50),250,3));
+            bricks2.add(new Brick(1300-(i*50),250,4));
         }
         for(int i = 0; i < 8; i++){
-            bricks2.add(new Brick(1300-(i*50),400,3));
+            bricks2.add(new Brick(1300-(i*50),400,4));
         }
         for(int i = 0; i < 3; i++){
-            bricks2.add(new Brick(1350,400+(i*50),3));
+            bricks2.add(new Brick(1350,400+(i*50),4));
         }
-        bricks2.add(new Brick(1100,225,3));
-        bricks2.add(new Brick(1000,375,3));
+        bricks2.add(new Brick(1100,225,4));
+        bricks2.add(new Brick(1000,375,4));
 
 //      for (int i = 0; i < 2; i++){
 //          bricks2.add(new Brick(650+(i*50),400,1));

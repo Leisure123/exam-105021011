@@ -93,6 +93,9 @@ public class Test2 extends JFrame implements Runnable{
 
     }
 
+    public int getTime(){
+        return time;
+    }
 
     public void paint(Graphics g){
         BufferedImage image = new BufferedImage(width,height,BufferedImage.TYPE_3BYTE_BGR);

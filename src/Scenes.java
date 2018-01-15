@@ -162,6 +162,17 @@ public class Scenes {
         bricks3.add(new Brick(1350,550,5));
         bricks3.add(new Brick(1400,550,5));
         bricks3.add(new Brick(1450,550,5));
+
+        //後新增
+        bricks3.add(new Brick(1100,200,4));
+        bricks3.add(new Brick(950,200,4));
+        bricks3.add(new Brick(1150,300,4));
+
+        bricks3.add(new Brick(1300,100,4));
+        bricks3.add(new Brick(1300,250,4));
+        bricks3.add(new Brick(1300,400,4));
+        bricks3.add(new Brick(1350,350,4));
+        bricks3.add(new Brick(1300,525,4));
     }
 
     public ArrayList<Brick> getBricks() {

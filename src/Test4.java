@@ -10,7 +10,7 @@ public class Test4 extends JFrame implements Runnable{
     //    String imagePath = System.getProperty("user.dir") + "/Image/";
     private BufferedImage image;
     private Graphics g2;
-    private int time = 0;
+    private int time;
     private Timer timer;
 
     private ImageStore store = new ImageStore();
@@ -32,6 +32,7 @@ public class Test4 extends JFrame implements Runnable{
 
         this.repaint();
 
+        time = t3.getTime();
         t.start();
 
         this.addWindowListener(new WindowAdapter() {

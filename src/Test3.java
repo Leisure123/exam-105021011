@@ -14,7 +14,7 @@ public class Test3 extends JFrame implements Runnable{
 
     private BufferedImage image;
     private Graphics g2;
-    private int time = 0;
+    private int time ;
     private Timer timer;
 
     private ImageStore store = new ImageStore();
@@ -31,6 +31,7 @@ public class Test3 extends JFrame implements Runnable{
         this.setTitle("Mario_迷魂陣");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLayout(null);
+        time = t2.getTime();
 
         this.mario = new Mario2(5,100);
 
@@ -94,6 +95,9 @@ public class Test3 extends JFrame implements Runnable{
 
     }
 
+    public int getTime(){
+        return time;
+    }
 
     public void paint(Graphics g){
         BufferedImage image = new BufferedImage(width,height,BufferedImage.TYPE_3BYTE_BGR);
